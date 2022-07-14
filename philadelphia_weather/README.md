@@ -10,8 +10,8 @@ This repo may be useful in three ways.
 
 Full disclosure: I'm a novice Github Actions user. This repo reflects my best understanding of Github Actions, and I plan to update it as my skills improve.
 
-![Daily High Temperature in Milwaukee](graphs/DailyHighTemp_USW00014839.png)
-![Cumulative Annual Precipitation in Milwaukee](graphs/AnnualCumulativePrecipitation_USW00014839.png)
+![Daily High Temperature in Milwaukee](graphs/DailyHighTemp_USW00013739_2022.png)
+![Cumulative Annual Precipitation in Milwaukee](graphs/AnnualCumulativePrecipitation_USW00013739_2022.png)
 
 ## About this data
 
@@ -27,14 +27,14 @@ For every weather station in the daily GHCN, NOAA maintains a file with the stat
 
 Each weather station is assigned a unique indicator. The full list of station names, coordinates, and unique IDs is [available here](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt).
 
-I use the station at Milwaukee's General Mitchell Airport, whose code is `USW00014839`. This station's comprehensive daily dataset is available at `https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/by_station/USW00014839.csv.gz`. Simply substitute the code of a different station to retrieve its data instead.
+I use the station at Philadelphia's International Airport, whose code is `USW00013739`. This station's comprehensive daily dataset is available at `https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/by_station/USW00014839.csv.gz`. Simply substitute the code of a different station to retrieve its data instead.
 
-Refer to `R/Retrieve_GHCN_USW00014839.R` for a demonstration of downloading and processing this dataset. See [NOAA's documentation](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt) for detailed descriptions of the original variable definitions.
+Refer to `R/Retrieve_GHCN_USW00013739.R` for a demonstration of downloading and processing this dataset. See [NOAA's documentation](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt) for detailed descriptions of the original variable definitions.
 
 
 ## Replicating or altering the graph
 
-The image `graphs/DailyHighTemp_USW00014839.png` is created by `R/BuildDailyHigh.R`. See the README in [/graphs](/graphs) for a step-by-step tutorial.
+The image `graphs/DailyHighTemp_USW00013739.png` is created by `R/BuildDailyHigh.R`. See the README in [/graphs](/graphs) for a step-by-step tutorial.
 
 ## Automatic Updating with Github Actions
 
