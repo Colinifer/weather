@@ -1,6 +1,6 @@
 ## Automated Tufte-style weather graphs
 
-This repository creates the weather graphs below (inspired by [Edward Tufte](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=00014g)) using R's {{ggplot2}} package. Updated data is pulled directly from NOAA's servers in CSV format. The entire process is automated using Github Actions.
+This repository was cloned from [@jdjohn215](https://github.com/jdjohn215/milwaukee-weather/) and creates the weather graphs below (inspired by [Edward Tufte](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=00014g)) using R's {{ggplot2}} package. Updated data is pulled directly from NOAA's servers in CSV format. The entire process is automated using Github Actions.
 
 This repo may be useful in three ways.
 
@@ -10,8 +10,8 @@ This repo may be useful in three ways.
 
 Full disclosure: I'm a novice Github Actions user. This repo reflects my best understanding of Github Actions, and I plan to update it as my skills improve.
 
-![Daily High Temperature in Milwaukee](graphs/DailyHighTemp_USW00013739_2022.png)
-![Cumulative Annual Precipitation in Milwaukee](graphs/AnnualCumulativePrecipitation_USW00013739_2022.png)
+![Daily High Temperature in Philadelphia](graphs/DailyHighTemp_USW00013739_2022.png)
+![Cumulative Annual Precipitation in Philadelphia](graphs/AnnualCumulativePrecipitation_USW00013739_2022.png)
 
 ## About this data
 
