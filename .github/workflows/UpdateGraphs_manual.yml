@@ -37,16 +37,16 @@ jobs:
         with:
           timeout_seconds: 30
           max_attempts: 3
-          command: Rscript -e 'source("philadelphia_weather/R/Retrieve_GHCN_USW00013739.R")'
+          command: Rscript -e 'source("R/Retrieve_GHCN_USW00013739.R")'
           continue_on_error: true
       - name: Commit data
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update data
       - name: Build temperature graph
-        run:  Rscript -e 'source("philadelphia_weather/R/BuildDailyHigh.R")'
+        run:  Rscript -e 'source("R/BuildDailyHigh.R")'
       - name: Build precipitation graph
-        run:  Rscript -e 'source("philadelphia_weather/R/BuildCumulativePrecipitation.R")'
+        run:  Rscript -e 'source("R/BuildCumulativePrecipitation.R")'
       - name: Commit graphs
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
