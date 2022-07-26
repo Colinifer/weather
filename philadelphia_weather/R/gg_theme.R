@@ -1,5 +1,8 @@
 
-extrafont::loadfonts(quiet = TRUE)
+# extrafont::loadfonts(quiet = TRUE)
+library(showtext)
+font_add_google(name = "Montserrat", family = "montserrat")
+font_add_google(name = "Chivo", family = "chivo")
 
 color_cw <-
   c(
