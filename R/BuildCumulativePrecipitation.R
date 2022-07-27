@@ -4,13 +4,13 @@ library(tidyr)
 library(dplyr)
 library(lubridate)
 library(stringr)
-source('philadelphia_weather/R/gg_theme.R')
+source('R/gg_theme.R')
 
 station_id <- 'USW00013739' # PHILADELPHIA INTL AP
 
 filter_year <- as.numeric(format(Sys.Date(), '%Y'))-0
 
-ghcn <- read_csv(glue::glue('philadelphia_weather/data/GHCN_{station_id}.csv')) |> 
+ghcn <- read_csv(glue::glue('data/GHCN_{station_id}.csv')) |> 
   filter(year <= filter_year) |> 
   group_by(year) |> 
   arrange(day_of_year) |> 
@@ -121,5 +121,5 @@ cum.precip.graph <- daily.summary.stats %>%
 
 cum.precip.graph
 
-ggsave(glue::glue('philadelphia_weather/graphs/AnnualCumulativePrecipitation_{station_id}_{filter_year}.png'), plot = cum.precip.graph,
+ggsave(glue::glue('graphs/AnnualCumulativePrecipitation_{station_id}_{filter_year}.png'), plot = cum.precip.graph,
        width = 8, height = 4)

@@ -54,5 +54,5 @@ ghcn.wide <- ghcn %>%
          TMAX, TMIN)
 
 write_csv(x = ghcn.wide, 
-          file = glue::glue("philadelphia_weather/data/GHCN_{station_id}.csv"))
+          file = glue::glue("data/GHCN_{station_id}.csv"))
 

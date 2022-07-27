@@ -4,13 +4,13 @@ library(tidyr)
 library(dplyr)
 library(lubridate)
 library(stringr)
-source('philadelphia_weather/R/gg_theme.R')
+source('R/gg_theme.R')
 
 station_id <- 'USW00013739' # PHILADELPHIA INTL AP
 
 filter_year <- as.numeric(format(Sys.Date(), '%Y'))-0
 
-ghcn <- read_csv(glue::glue("philadelphia_weather/data/GHCN_{station_id}.csv")) |> 
+ghcn <- read_csv(glue::glue("data/GHCN_{station_id}.csv")) |> 
   filter(year <= filter_year)
 
 year.to.plot <- max(ghcn$year)
@@ -206,7 +206,7 @@ max.graph2 <- max.graph +
                            direction = "y", hjust = 1, nudge_x = -5,
                            family = 'Montserrat')
 
-ggsave(glue::glue("philadelphia_weather/graphs/DailyHighTemp_{station_id}_{filter_year}.png"), plot = max.graph2,
+ggsave(glue::glue("graphs/DailyHighTemp_{station_id}_{filter_year}.png"), plot = max.graph2,
        width = 8, height = 4)
 
 
