@@ -4,7 +4,8 @@ library(tidyr)
 library(dplyr)
 library(lubridate)
 library(stringr)
-source('R/gg_theme.R')
+library(showtext)
+# source('R/gg_theme.R')
 
 station_id <- 'USW00013739' # PHILADELPHIA INTL AP
 
@@ -62,6 +63,47 @@ pctile.labels <- daily.summary.stats %>%
   pivot_longer(cols = -day_of_year, names_to = "pctile", values_to = "precip") %>% 
   mutate(pctile = ifelse(str_sub(pctile, 1, 1) == "x", 
                          paste0(str_sub(pctile, 2, -1), "th"), pctile))
+
+font_add_google(name = "Montserrat", family = "montserrat")
+font_add_google(name = "Chivo", family = "chivo")
+
+color_cw <-
+  c(
+    "#1D2329",
+    "#2C343A",
+    "#38424B",
+    "#16191C",
+    "#e0e0e0",
+    "#1AB063",
+    "#0580DC",
+    "#D64964",
+    "#959595"
+  )  
+
+theme_cw_light <-  theme(
+  line = element_line(lineend = 'round', color = color_cw[5]),
+  text = element_text(family = "Montserrat", color = color_cw[1]),
+  plot.background = element_rect(fill = '#fcfcfc', color = 'transparent'),
+  panel.border = element_rect(color = color_cw[5], fill = NA),
+  panel.background = element_rect(fill = color_cw[5], color = 'transparent'),
+  axis.ticks = element_line(color = color_cw[1], size = 0.5),
+  axis.ticks.length = unit(2.75, 'pt'),
+  axis.title = element_text(family = "Chivo", face = "bold", size = 8, color = color_cw[3]),
+  axis.title.y = element_text(angle = 90, vjust = 0.5),
+  axis.text = element_text(size = 7, color = color_cw[1]),
+  plot.title = element_text(family = "Chivo", face = "bold", size = 14),
+  plot.subtitle = element_text(size = 8, color = color_cw[3]),
+  plot.caption = element_text(family = "Montserrat", size = 5),
+  legend.background = element_rect(fill = color_cw[5], color = color_cw[5]),
+  legend.key = element_blank(),
+  panel.grid.minor = element_blank(),
+  panel.grid.major = element_line(color = '#fcfcfc', size = 0.3),
+  strip.background = element_rect(fill = color_cw[5]),
+  strip.text = element_text(size = 6, color = color_cw[3], family = "Chivo"),
+  legend.position = 'bottom',
+  panel.spacing.y = unit(0, 'lines'),
+  panel.spacing.x = unit(0.1, 'lines')
+)
 
 cum.precip.graph <- daily.summary.stats %>%
   filter(day_of_year < 366) %>%
