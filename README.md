@@ -10,8 +10,8 @@ This repo may be useful in three ways.
 
 Full disclosure: I'm a novice Github Actions user. This repo reflects my best understanding of Github Actions, and I plan to update it as my skills improve.
 
-![Daily High Temperature in Philadelphia](graphs/DailyHighTemp_USW00013739_2023.png)
-![Cumulative Annual Precipitation in Philadelphia](graphs/AnnualCumulativePrecipitation_USW00013739_2023.png)
+![Daily High Temperature in Philadelphia](graphs/DailyHighTemp_USW00013739_2024.png)
+![Cumulative Annual Precipitation in Philadelphia](graphs/AnnualCumulativePrecipitation_USW00013739_2024.png)
 
 ## About this data
 
