@@ -5,7 +5,7 @@ library(glue)
 library(jsonlite)
 
 # Load stations from JSON
-stations <- fromJSON("../stations.json")
+stations <- fromJSON("stations.json")
 
 for (i in 1:nrow(stations)) {
   station_id <- stations$id[i]

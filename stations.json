@@ -1,7 +1,8 @@
 [
-  {"id": "USW00013739", "name": "Philadelphia International Airport"},
-  {"id": "USW00093721", "name": "Baltimore-Washington International Airport"},
-  {"id": "USW00094720", "name": "Hyannis Barnstable Municipal Airport"},
-  {"id": "USW00012844", "name": "West Palm Beach International Airport"},
-  {"id": "USW00054734", "name": "Danbury Municipal Airport"}
+  {"id": "USW00013739", "name": "Philadelphia Int'l Airport"},
+  {"id": "USW00093721", "name": "Baltimore-Washington Int'l Airport"},
+  {"id": "USW00094720", "name": "Hyannis Barnstable Muni Airport"},
+  {"id": "USW00012844", "name": "West Palm Beach Int't Airport"},
+  {"id": "USW00012849", "name": "Ft. Lauderdale Int'l Airport"},
+  {"id": "USW00054734", "name": "Danbury Muni Airport"}
 ]
