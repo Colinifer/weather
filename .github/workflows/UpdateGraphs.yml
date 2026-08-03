@@ -3,7 +3,7 @@ on:
   - cron: "0 19 * * *"
   workflow_dispatch:
 
-name: Philadelphia weather update
+name: Weather Data Update
 
 jobs:
   render:
@@ -12,14 +12,16 @@ jobs:
     timeout-minutes: 30
     
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
-          # use Posit's CRAN mirror with precompiled binaries
           use-public-rspm: true
           
       - name: Install packages
-        uses: r-lib/actions/setup-r-dependencies@v2 # automatically sets up cache
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
             any::ggplot2 
@@ -35,25 +37,27 @@ jobs:
             any::data.table
             any::showtext
             any::R.utils
+            any::jsonlite
       
-      - name: Check out repository
-        uses: actions/checkout@v4
-      
-      - name: Retrieve data
+      - name: Retrieve data for all stations
         uses: nick-fields/retry@v3
         with:
-          timeout_seconds: 30
+          timeout_seconds: 60 # Increased timeout for multiple stations
           max_attempts: 3
-          command: Rscript -e 'Sys.setenv(RENV_AUTOLOAD_ENABLED="FALSE"); source("R/Retrieve_GHCN_USW00013739.R")'
+          # Note: Update this path if you named your new retrieval script differently
+          command: Rscript -e 'Sys.setenv(RENV_AUTOLOAD_ENABLED="FALSE"); source("R/Retrieve_GHCN_Stations.R")'
           continue_on_error: true
           
-      - name: Build temperature graph
+      - name: Build temperature graphs
         run:  Rscript -e 'Sys.setenv(RENV_AUTOLOAD_ENABLED="FALSE"); source("R/BuildDailyHigh.R")'
         
-      - name: Build precipitation graph
+      - name: Build cumulative precipitation graphs
         run:  Rscript -e 'Sys.setenv(RENV_AUTOLOAD_ENABLED="FALSE"); source("R/BuildCumulativePrecipitation.R")'
+
+      - name: Build monthly precipitation graphs
+        run:  Rscript -e 'Sys.setenv(RENV_AUTOLOAD_ENABLED="FALSE"); source("R/BuildMonthlyPrecipitation.R")'
         
-      - name: Commit graphs
+      - name: Commit updated data and graphs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update data & graphs
+          commit_message: "Auto-update: data and graphs for all stations"
